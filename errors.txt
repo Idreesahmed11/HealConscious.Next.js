@@ -1,0 +1,12 @@
+[31mFailed to type check.
+[39m
+[36m./app/connect-heal-conscious/page.tsx[39m:[33m1[39m:[33m25[39m
+[31m[1mType error[22m[39m: File 'E:/Intrnship/NextJs/healconscious/app/pages/ConnectHealConscious.jsx' is not a module.
+
+[31m[1m>[0m [90m1 |[0m [36mimport[0m [33mConnectPage[0m [36mfrom[0m [32m'@/app/pages/ConnectHealConscious'[0m;
+  [90m  |[0m                         [31m[1m^[0m
+  [90m2 |[0m
+  [90m3 |[0m [36mexport[0m [36mdefault[0m [36mfunction[0m [33mPage[0m() {
+  [90m4 |[0m   [36mreturn[0m <[33mConnectPage[0m />;
+Next.js build worker exited with code: 1 and signal: null
+[?25h
