@@ -2,18 +2,17 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import "./ExpertSection.css";
-
-const LenaVideo = '/assets/LenaSequence-01-1.mp4';
-const TalmudVideo = '/assets/Talmud-BahSequence-01_16.mp4';
-const loginImg = '/assets/Careox-Connect-Mobile-App-Screens-300x275.png';
-const TestimonialVideo1 = '/assets/testimonial1.mp4.mp4';
-const TestimonialVideo2 = '/assets/testimonial2.mp4.mp4';
-const TestimonialVideo3 = '/assets/testimonial3.mp4.mp4';
-const LenaAndres = '/assets/Lena Andres.webp';
-const TalmuBah = '/assets/Talmu Bah.png';
-const ElliotSmith = '/assets/Elliot Smith.png';
-const FazeelaSayed = '/assets/Fazeela Sayed.png';
-const TahreemAsghar = '/assets/Tahreem Asghar.png';
+const LenaVideo = '/assets/LenaSequence-01-1.mp4';;
+const TalmudVideo = '/assets/Talmud-BahSequence-01_16.mp4';;
+const loginImg = '/assets/Careox-Connect-Mobile-App-Screens-300x275.png';;
+const TestimonialVideo1 = '/assets/testimonial1.mp4.mp4';;
+const TestimonialVideo2 = '/assets/testimonial2.mp4.mp4';;
+const TestimonialVideo3 = '/assets/testimonial3.mp4.mp4';;
+const LenaAndres = '/assets/Lena Andres.webp';;
+const TalmuBah = '/assets/Talmu Bah.png';;
+const ElliotSmith = '/assets/Elliot Smith.png';;
+const FazeelaSayed = '/assets/Fazeela Sayed.png';;
+const TahreemAsghar = '/assets/Tahreem Asghar.png';;
 
 const faqs = [
   {
@@ -38,61 +37,17 @@ const faqs = [
   },
 ];
 
-
-const LazyVideo = ({ src, className, style }) => {
-  const [playing, setPlaying] = useState(false);
-
-  if (!playing) {
-    return (
-      <div
-        onClick={() => setPlaying(true)}
-        style={{
-          position: 'relative',
-          background: '#111',
-          cursor: 'pointer',
-          borderRadius: '8px',
-          overflow: 'hidden',
-          width: '100%',
-          height: style?.height || '100%',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          ...style,
-        }}
-        className={className}
-      >
-        {/* Play Button */}
-        <div style={{
-          width: 64,
-          height: 64,
-          borderRadius: '50%',
-          background: 'rgba(255,255,255,0.9)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 2,
-        }}>
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="#333">
-            <polygon points="5,3 19,12 5,21" />
-          </svg>
-        </div>
-        <p style={{ position: 'absolute', bottom: 10, color: '#aaa', fontSize: 12 }}>Click to play</p>
-      </div>
-    );
-  }
-
-  return (
-    <video
-      controls
-      autoPlay
-      className={className}
-      style={style}
-      preload="none"
-    >
-      <source src={src} type="video/mp4" />
-    </video>
-  );
-};
+const PlaceholderAvatar = () => (
+  <div className="team-img-placeholder">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="8" width="64" height="64" rx="4" stroke="#c8c8c8" strokeWidth="2" fill="#f0f0f0" />
+      <rect x="22" y="18" width="36" height="28" rx="2" stroke="#c8c8c8" strokeWidth="1.5" fill="none" />
+      <circle cx="40" cy="28" r="6" stroke="#c8c8c8" strokeWidth="1.5" fill="none" />
+      <path d="M28 46 Q40 36 52 46" stroke="#c8c8c8" strokeWidth="1.5" fill="none" />
+      <path d="M14 58 Q40 44 66 58" stroke="#c8c8c8" strokeWidth="1.5" fill="none" />
+    </svg>
+  </div>
+);
 
 const ExpertSection = () => {
   const router = useRouter();
@@ -104,6 +59,8 @@ const ExpertSection = () => {
 
   return (
     <>
+    
+      
       <section className="expert-section">
         <div className="expert-text">
           <p className="expert-tag">4 week program to rewire your brain</p>
@@ -118,12 +75,15 @@ const ExpertSection = () => {
           </button>
         </div>
         <div className="expert-videos">
-          {/* ✅ Lazy load — page load par download nahi hogi */}
-          <LazyVideo src={LenaVideo} />
-          <LazyVideo src={TalmudVideo} />
+          <video controls>
+            <source src={LenaVideo} type="video/mp4" />
+          </video>
+          <video controls>
+            <source src={TalmudVideo} type="video/mp4" />
+          </video>
         </div>
       </section>
-
+      
       <section className="faq-section">
         <div className="faq-left">
           <p className="faq-tag">Ask the expert!</p>
@@ -149,86 +109,91 @@ const ExpertSection = () => {
         </div>
         <div className="faq-right">
           <div className="faq-image">
-            {/* ✅ loading="lazy" add kiya */}
-            <img src={loginImg} alt="Login Screen" loading="lazy" />
+            <img src={loginImg} alt="Login Screen" />
           </div>
         </div>
       </section>
 
-      <section className="w-full py-12 bg-white">
-        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8">
-          What People Say About Us
-        </h2>
-        <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16">
-          <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
-            {[TestimonialVideo1, TestimonialVideo2, TestimonialVideo3].map((src, i) => (
-              <div key={i} className="rounded-xl overflow-hidden shadow-md bg-black">
-                {/* ✅ Lazy load testimonial videos bhi */}
-                <LazyVideo
-                  src={src}
-                  className="w-full object-cover"
-                  style={{ height: 'clamp(150px, 30vw, 480px)' }}
-                />
-              </div>
-            ))}
-          </div>
+
+<section className="w-full py-12 bg-white">
+  <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8">
+    What People Say About Us
+  </h2>
+  <div className="max-w-4xl mx-auto px-8 sm:px-12 lg:px-16">
+    <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
+      {[TestimonialVideo1, TestimonialVideo2, TestimonialVideo3].map((src, i) => (
+        <div key={i} className="rounded-xl overflow-hidden shadow-md bg-black">
+          <video
+            controls
+            className="w-full object-cover"
+            style={{ height: 'clamp(150px, 30vw, 480px)' }}
+          >
+            <source src={src} type="video/mp4" />
+          </video>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      <section className="team-section">
-        <p className="team-tag">Our Team</p>
-        <h2 className="team-heading">Mental healthcare squad</h2>
-        <p className="team-desc">
-          Compassionate experts dedicated to guiding you on your journey to mental and emotional well-being.
-        </p>
+      
+<section className="team-section">
+  <p className="team-tag">Our Team</p>
+  <h2 className="team-heading">Mental healthcare squad</h2>
+  <p className="team-desc">
+    Compassionate experts dedicated to guiding you on your journey to mental and emotional well-being.
+  </p>
 
-        <div className="team-grid team-grid-3">
-          <div className="team-card">
-            <div className="team-img-circle">
-              {/* ✅ loading="lazy" images par bhi */}
-              <img src={LenaAndres} alt="Lena Andres" loading="lazy" />
-            </div>
-            <h3 className="team-name">LenaAndres</h3>
-            <p className="team-role">Coach | CIO – DR</p>
-          </div>
 
-          <div className="team-card">
-            <div className="team-img-circle">
-              <img src={TalmuBah} alt="Talmud Bah" loading="lazy" />
-            </div>
-            <h3 className="team-name">Talmud Bah</h3>
-            <p className="team-role">Life Coach | Therapist – UK</p>
-          </div>
+  <div className="team-grid team-grid-3">
+    <div className="team-card">
+      <div className="team-img-circle">
+        <img src={LenaAndres} alt="Lena Andres" />
+      </div>
+      <h3 className="team-name">LenaAndres</h3>
+      <p className="team-role">Coach | CIO – DR</p>
+    </div>
 
-          <div className="team-card">
-            <div className="team-img-circle">
-              <img src={ElliotSmith} alt="Elliot Smith" loading="lazy" />
-            </div>
-            <h3 className="team-name">Elliot Smith</h3>
-            <p className="team-role">Sports Psychologist – UK</p>
-          </div>
-        </div>
+    <div className="team-card">
+      <div className="team-img-circle">
+        <img src={TalmuBah} alt="Talmud Bah" />
+      </div>
+      <h3 className="team-name">Talmud Bah</h3>
+      <p className="team-role">Life Coach | Therapist – UK</p>
+    </div>
 
-        <div className="team-grid team-grid-2">
-          <div className="team-card">
-            <div className="team-img-circle">
-              <img src={FazeelaSayed} alt="Fazeela Syed" loading="lazy" />
-            </div>
-            <h3 className="team-name">Fazeela Syed</h3>
-            <p className="team-role">Psychology Resident – AJK</p>
-          </div>
+    <div className="team-card">
+      <div className="team-img-circle">
+        <img src={ElliotSmith} alt="Elliot Smith" />
+      </div>
+      <h3 className="team-name">Elliot Smith</h3>
+      <p className="team-role">Sports Psychologist – UK</p>
+    </div>
+  </div>
 
-          <div className="team-card">
-            <div className="team-img-circle">
-              <img src={TahreemAsghar} alt="Tahreem Asghar" loading="lazy" />
-            </div>
-            <h3 className="team-name">Tahreem Asghar</h3>
-            <p className="team-role">Mental Health Coach – PK</p>
-          </div>
-        </div>
-      </section>
+  
+  <div className="team-grid team-grid-2">
+    <div className="team-card">
+      <div className="team-img-circle">
+        <img src={FazeelaSayed} alt="Fazeela Syed" />
+      </div>
+      <h3 className="team-name">Fazeela Syed</h3>
+      <p className="team-role">Psychology Resident – AJK</p>
+    </div>
+
+    <div className="team-card">
+      <div className="team-img-circle">
+        <img src={TahreemAsghar} alt="Tahreem Asghar" />
+      </div>
+      <h3 className="team-name">Tahreem Asghar</h3>
+      <p className="team-role">Mental Health Coach – PK</p>
+    </div>
+  </div>
+</section>
+    
     </>
   );
 };
 
 export default ExpertSection;
+
