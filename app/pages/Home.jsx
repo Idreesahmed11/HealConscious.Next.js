@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from "react";
-import CareoxSection from "../components/CareoxSection/CareoxSection.";
+import CareoxSection from "../components/CareoxSection/CareoxSection";
 import ExpertSection from "../components/ExpertSection/ExpertSection";
 import HeroSection from "../components/HeroSection/HeroSection";
 import InfoSection from "../components/InfoSection/InfoSection";
